@@ -123,4 +123,15 @@
             atualizarCarrinho();
         });
 
-        document.getElementById("finalizarPedido").addEventListener("clic
+        document.getElementById("finalizarPedido").addEventListener("click", () => {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+            alert("Pedido enviado com sucesso! 🍕");
+            carrinho.length = 0;
+            atualizarCarrinho();
+        });
+    </script>
+</body>
+</html>
