@@ -18,9 +18,11 @@
     </header>
 
     <main class="pedidos-container">
+        <!-- FORMULÁRIO DE PEDIDOS -->
         <section class="pedido-form">
             <h2>Monte sua Pizza</h2>
-            <label for="sabor">Sabor:</label>
+
+            <label for="sabor">Sabor (R$ 0,00 - preço varia conforme tamanho):</label>
             <select id="sabor">
                 <option>Calabresa</option>
                 <option>Portuguesa</option>
@@ -29,21 +31,21 @@
                 <option>Marguerita</option>
             </select>
 
-            <label for="tamanho">Tamanho:</label>
+            <label for="tamanho">Tamanho e Preço:</label>
             <select id="tamanho">
-                <option>Pequena</option>
-                <option>Média</option>
-                <option>Grande</option>
-                <option>Família</option>
+                <option value="Pequena">Pequena - R$ 30,00</option>
+                <option value="Média">Média - R$ 40,00</option>
+                <option value="Grande">Grande - R$ 50,00</option>
+                <option value="Família">Família - R$ 60,00</option>
             </select>
 
-            <label for="bebida">Refrigerante:</label>
+            <label for="bebida">Refrigerante e Preço:</label>
             <select id="bebida">
-                <option>Nenhum</option>
-                <option>Coca-Cola 2L</option>
-                <option>Guaraná Antarctica 2L</option>
-                <option>Fanta Laranja 2L</option>
-                <option>Sprite 2L</option>
+                <option value="Nenhum">Nenhum - R$ 0,00</option>
+                <option value="Coca-Cola 2L">Coca-Cola 2L - R$ 12,00</option>
+                <option value="Guaraná Antarctica 2L">Guaraná Antarctica 2L - R$ 10,00</option>
+                <option value="Fanta Laranja 2L">Fanta Laranja 2L - R$ 10,00</option>
+                <option value="Sprite 2L">Sprite 2L - R$ 10,00</option>
             </select>
 
             <label for="endereco">Endereço de entrega:</label>
@@ -52,10 +54,12 @@
             <button type="button" id="addCarrinho">Adicionar ao Carrinho</button>
         </section>
 
+        <!-- CARRINHO DE COMPRAS -->
         <section class="carrinho">
             <h2>🛒 Carrinho de Pedidos</h2>
             <ul id="listaCarrinho"></ul>
             <p id="total">Total: R$ 0,00</p>
+
             <div class="botoes-carrinho">
                 <button id="limparCarrinho">Limpar Carrinho</button>
                 <button id="finalizarPedido">Finalizar Pedido</button>
@@ -73,6 +77,7 @@
         const totalSpan = document.getElementById("total");
         const carrinho = [];
 
+        // Tabela de preços
         const precos = {
             'Pequena': 30,
             'Média': 40,
@@ -110,7 +115,7 @@
 
             carrinho.forEach((item, index) => {
                 const li = document.createElement("li");
-                li.textContent = `${item.sabor} (${item.tamanho}) + ${item.bebida} - R$ ${item.totalItem.toFixed(2)}`;
+                li.textContent = `${item.sabor} (${item.tamanho}) + ${item.bebida} → R$ ${item.totalItem.toFixed(2)}`;
                 listaCarrinho.appendChild(li);
                 total += item.totalItem;
             });
